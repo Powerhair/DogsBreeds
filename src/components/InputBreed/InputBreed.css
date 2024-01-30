@@ -1,0 +1,60 @@
+.inputbreed {
+  grid-area: input;
+  display: grid;
+  grid-template: minmax(auto, 100px) minmax(auto, 70px) minmax(300px, auto)/minmax(auto, 500px);
+  grid-template-areas: "title" "select" "description";
+}
+@media screen and (max-width: 900px) {
+  .inputbreed {
+    margin-bottom: 30px;
+  }
+}
+.inputbreed__title {
+  grid-area: title;
+  color: #ffa260;
+  font-size: 36px;
+  font-family: "Josefin Slab";
+  letter-spacing: 2px;
+  justify-self: center;
+}
+.inputbreed__select {
+  font-family: "Poiret One", sans-serif;
+  color: white;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  max-width: 400px;
+  background: none;
+  border: 2px solid;
+  border-radius: 35px;
+  text-align: center;
+  justify-self: center;
+  grid-area: select;
+}
+.inputbreed__description {
+  margin-top: 50px;
+  grid-area: description;
+}
+.inputbreed__dogname {
+  font-family: "Poiret One", sans-serif;
+  color: #000;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 20px;
+}
+.inputbreed__text {
+  font-family: "Poiret One", sans-serif;
+  color: #000;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+@media screen and (max-width: 500px) {
+  .inputbreed__text {
+    font-size: 18px;
+  }
+}/*# sourceMappingURL=InputBreed.css.map */

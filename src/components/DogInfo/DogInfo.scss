@@ -1,0 +1,30 @@
+.doginfo {
+  grid-area: doginfo;
+  display: grid;
+  grid-template: minmax(auto, 600px) / 1fr;
+  justify-self: start;
+  position: relative;
+  @media screen and (max-width: 876px) {
+    width: 100%;
+    padding: 0;
+  }
+  @media screen and (max-width: 600px) {
+    grid-template: minmax(auto, 400px) / minmax(auto, 400px);
+    justify-content: center;
+  }
+  &__img {
+    width: 100%;
+    object-position: 10% 0;
+    border-radius: 65px;
+    object-fit: contain;
+    box-shadow: -2px 6px 19px 0 #7f818e;
+  }
+  &__txt {
+    font-family: "Poiret One", sans-serif;
+    color: #000;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}

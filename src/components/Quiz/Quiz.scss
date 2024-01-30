@@ -1,0 +1,128 @@
+.quiz {
+  margin-top: 70px;
+  display: grid;
+  grid-area: quiz;
+  padding: 15px;
+  grid-template: minmax(auto, 70px) minmax(auto, 400px) minmax(auto, 50px) / repeat(
+      2,
+      1fr
+    );
+  grid-template-areas:
+    "title ."
+    "dogImage dogAnswers"
+    "correct .";
+  justify-items: right;
+  gap: 40px;
+  @media screen and (max-width: 800px) {
+    gap: 10px;
+    grid-template:
+      minmax(auto, 70px) minmax(300px, auto) minmax(auto, 50px) minmax(
+        100px,
+        auto
+      )
+      / 1fr;
+    grid-template-areas:
+      "title"
+      "dogImage"
+      "correct"
+      "dogAnswers";
+  }
+  @media screen and (max-width: 500px) {
+    gap: 10px;
+    grid-template:
+      minmax(auto, 70px) minmax(300px, auto) minmax(auto, 50px) minmax(
+        100px,
+        auto
+      )
+      / 320px;
+    grid-template-areas:
+      "title"
+      "dogImage"
+      "correct"
+      "dogAnswers";
+  }
+  &__title {
+    grid-area: title;
+    color: #ffa260;
+    font-size: 36px;
+    font-family: "Josefin Slab";
+    letter-spacing: 2px;
+    justify-self: center;
+    align-self: center;
+  }
+
+  &__img {
+    grid-area: dogImage;
+    border-radius: 65px;
+    object-position: 10% 0;
+    width: 100%;
+    object-fit: contain;
+    transition: 0.3s ease;
+    @media screen and (max-width: 800px) {
+      height: 400px;
+      width: auto;
+      justify-self: center;
+    }
+    @media screen and (max-width: 500px) {
+      height: 320px;
+      width: 320px;
+    }
+    &:hover,
+    &:focus {
+      border-color: #{adjust-hue(#e4cb58, 45deg)};
+      color: #fff;
+      box-shadow: 0 0.5em 0.5em -0.4em #{adjust-hue(#e4cb58, 45deg)};
+      transform: translateY(-0.25em);
+    }
+  }
+  &__container {
+    grid-area: dogAnswers;
+    display: grid;
+    grid-template: repeat(5, 1fr) / 400px;
+    gap: 1rem;
+    @media screen and (max-width: 800px) {
+      grid-template: repeat(3, 1fr) / repeat(2, 1fr);
+      gap: 10px;
+    }
+  }
+  &__button {
+    background: none;
+    border: 2px solid;
+    font-family: "Josefin Slab";
+    line-height: 1;
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0.5em;
+    padding: 1em 2em;
+    color: white;
+    transition: 0.25s;
+    @media screen and (max-width: 800px) {
+      font-weight: 400;
+      font-size: 14px;
+      &:last-child {
+        grid-column: 1 / span 2;
+      }
+    }
+    cursor: pointer;
+    &:hover {
+      border-color: #{adjust-hue(#e4cb58, 45deg)};
+      color: #fff;
+      box-shadow: 0 0.5em 0.5em -0.4em #{adjust-hue(#e4cb58, 45deg)};
+      transform: translateY(-0.25em);
+    }
+  }
+  &__result {
+    grid-area: correct;
+    color: #ffa260;
+    font-size: 26px;
+    font-family: "Josefin Slab";
+    letter-spacing: 2px;
+    justify-self: center;
+  }
+  &__result--correct {
+    line-height: 1;
+  }
+  &__result--incorect {
+    line-height: 1;
+  }
+}
