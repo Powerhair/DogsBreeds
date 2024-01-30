@@ -16,7 +16,7 @@ const App = () => {
 
   useEffect(() => {
     const fetchData = () => {
-      return fetch("31.129.102.218:3000/dogbreeds")
+      return fetch("http://31.129.102.218:3000/dogbreeds")
         .then((response) => response.json())
         .then((data) => {
           setBreedsList(data);

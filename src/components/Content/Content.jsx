@@ -8,7 +8,7 @@ function Content() {
 
   useEffect(() => {
     const fetchData = () => {
-      return fetch("31.129.102.218:3000/dogbreeds/random")
+      return fetch("http://31.129.102.218:3000/dogbreeds/random")
         .then((response) => response.json())
         .then((data) => {
           const images = data.map((breed) => breed.imagePath);
