@@ -12,7 +12,7 @@ export default function InputBreed({
 
   useEffect(() => {
     const fetchData = () => {
-      return fetch(`http://31.129.102.218:3000/dogbreeds/${selectedBreed}`)
+      return fetch(`https://dogsbreed.store/dogbreeds/${selectedBreed}`)
         .then((response) => response.json())
         .then((data) => {
           const breeds = data.nameRu;

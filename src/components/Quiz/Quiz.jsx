@@ -25,7 +25,7 @@ export default function Quiz({ breeds }) {
       const breed = breeds[currentBreedIndex]?.nameEn;
 
       const fetchCurrentDog = () => {
-        return fetch(`http://31.129.102.218:3000/dogbreeds/${breed}`)
+        return fetch(`https://dogsbreed.store/dogbreeds/${breed}`)
           .then((response) => response.json())
           .then((info) => {
             setDogInfo((prevDogInfo) => ({
