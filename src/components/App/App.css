@@ -2,9 +2,18 @@
   margin: 0;
   padding: 15px;
   display: grid;
-  grid-template: minmax(100px, auto) 1fr minmax(70px, auto)/1fr;
-  grid-template-areas: "header" "main" "footer";
-  background: linear-gradient(180deg, rgba(217, 217, 217, 0) 0.01%, #afcddd 0.02%, rgba(184, 193, 198, 0.76) 42.71%, rgba(58, 98, 121, 0.73) 89.58%);
+  grid-template: minmax(100px, auto) 1fr minmax(70px, auto) / 1fr;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  background: linear-gradient(
+    180deg,
+    rgba(217, 217, 217, 0) 0.01%,
+    #afcddd 0.02%,
+    rgba(184, 193, 198, 0.76) 42.71%,
+    rgba(58, 98, 121, 0.73) 89.58%
+  );
   align-items: center;
   justify-items: center;
-}/*# sourceMappingURL=App.css.map */
+}

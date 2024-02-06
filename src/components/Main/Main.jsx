@@ -7,7 +7,14 @@ import Test from "../Test/Test";
 
 import React, { useState } from "react";
 
-export default function Main({ breedsList }) {
+export default function Main({
+  breedsList,
+  randomDogImage,
+  randomDogBreeds,
+  randomDogTemperaments,
+  dogInfo,
+  nextQuizQuestion,
+}) {
   const [breedName, setBreedName] = useState("");
   const [selectedBreed, setSelectedBreed] = useState("");
 
@@ -26,8 +33,12 @@ export default function Main({ breedsList }) {
   return (
     <div className="main">
       <Test breedList={breedsList} />
-      <Content />
-      <Quiz breeds={breedsList} />
+      <Content
+        randomDogImage={randomDogImage}
+        randomDogBreeds={randomDogBreeds}
+        randomDogTemperaments={randomDogTemperaments}
+      />
+      <Quiz dogInfo={dogInfo} nextQuizQuestion={nextQuizQuestion} />
       <SearchDog
         breedName={breedName}
         handleInputChange={handleInputChange}

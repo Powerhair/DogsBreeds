@@ -1,6 +1,7 @@
 import "./InputBreed.scss";
 
 import React, { useState, useEffect } from "react";
+import { apiUrl } from "../../utils/config";
 
 export default function InputBreed({
   selectedBreed,
@@ -12,7 +13,7 @@ export default function InputBreed({
 
   useEffect(() => {
     const fetchData = () => {
-      return fetch(`https://dogsbreed.store/dogbreeds/${selectedBreed}`)
+      return fetch(apiUrl + `dogbreeds/${selectedBreed}`)
         .then((response) => response.json())
         .then((data) => {
           const breeds = data.nameRu;

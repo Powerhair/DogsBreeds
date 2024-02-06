@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { apiUrl } from "../../utils/config";
 
 import "./DogInfo.scss";
 
@@ -7,7 +8,7 @@ const DogInfo = ({ breed }) => {
 
   useEffect(() => {
     const fetchData = () => {
-      return fetch(`https://dogsbreed.store/dogbreeds/${breed}`)
+      return fetch(apiUrl + `dogbreeds/${breed}`)
         .then((response) => response.json())
         .then((data) => {
           const images = data.imagePath;

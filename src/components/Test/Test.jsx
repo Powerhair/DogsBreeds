@@ -1,40 +1,34 @@
 import React, { useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-
 import "./Test.scss";
 
 export default function Test({ breedList }) {
   const [name, setName] = useState("");
-  const [date, setDate] = useState(null);
-  // const [doneSum, setDoneSum] = useState(0);
+  const [date, setDate] = useState("");
   const [selectedBreed, setSelectedBreed] = useState({});
 
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
 
-  const handleDateChange = (selectedDate) => {
-    setDate(selectedDate);
+  const handleDateChange = (event) => {
+    setDate(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (name && date) {
       const currentDate = new Date();
-      currentDate.setHours(0, 0, 0, 0); // Сбрасываем время до начала дня
+      currentDate.setHours(0, 0, 0, 0);
 
-      if (date < currentDate) {
-        const year = date.getFullYear();
-        const month = date.getMonth() + 1;
-        const day = date.getDate();
-        let numericDate = new Date(year, month - 1, day).getTime();
+      const [day, month, year] = date.split(".");
+
+      if (year && month && day) {
+        let numericDate = new Date(year, parseInt(month) - 1, day).getTime();
 
         if (numericDate < 0) {
-          numericDate *= -1; // Преобразуем отрицательное значение в положительное
+          numericDate *= -1;
         }
 
-        // Преобразование имени в числовое значение (сумма ASCII-кодов символов)
         let nameSum = 0;
         for (let i = 0; i < name.length; i++) {
           nameSum += name.charCodeAt(i);
@@ -50,16 +44,10 @@ export default function Test({ breedList }) {
             .split("")
             .reduce((sum, digit) => sum + parseInt(digit), 0);
 
-        // setDoneSum(
-        //   digitsSum > breedList.length || digitsSum === 0
-        //     ? breedList.length
-        //     : digitsSum
-        // );
-
         setSelectedBreed(breedList[digitsSum - 1]);
 
         setName("");
-        setDate(null);
+        setDate("");
       }
     }
   };
@@ -84,15 +72,16 @@ export default function Test({ breedList }) {
         </div>
         <div className="test__container test__date">
           <label className="test__form-label" htmlFor="date">
-            Дата рождения:
+            Дата рождения (дд.мм.гггг):
           </label>
-          <DatePicker
+          <input
             className="test__input"
+            type="text"
             id="date"
-            selected={date}
+            value={date}
             onChange={handleDateChange}
-            dateFormat="dd.MM.yyyy"
-            placeholderText="Выберите дату"
+            placeholder="дд.мм.гггг"
+            pattern="[0-3][0-9].[0-1][0-9].[0-9]{4}"
             required
           />
         </div>
