@@ -1,20 +1,20 @@
-.main {
-  display: grid;
-  grid-area: main;
-  grid-template: repeat(4, minmax(300px, auto)) 1fr / 1fr;
-  grid-template-areas:
-    "test"
-    "content"
-    "quiz"
-    "search";
-  align-items: center;
-  justify-items: center;
-  @media screen and (max-width: 460px) {
-    grid-template: repeat(4, minmax(300px, auto)) 1fr / minmax(auto, 450px);
-    grid-template-areas:
-      "test"
-      "content"
-      "quiz"
-      "search";
-  }
-}
+// .main {
+//   display: grid;
+//   grid-area: main;
+//   grid-template: repeat(4, minmax(300px, auto)) 1fr / 1fr;
+//   grid-template-areas:
+//     "test"
+//     "content"
+//     "quiz"
+//     "search";
+//   align-items: center;
+//   justify-items: center;
+//   @media screen and (max-width: 460px) {
+//     grid-template: repeat(4, minmax(300px, auto)) 1fr / minmax(auto, 450px);
+//     grid-template-areas:
+//       "test"
+//       "content"
+//       "quiz"
+//       "search";
+//   }
+// }

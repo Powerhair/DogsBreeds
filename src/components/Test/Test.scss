@@ -1,13 +1,11 @@
 .test {
   grid-area: test;
   display: grid;
-  grid-template: minmax(auto, 70px) 1fr / minmax(auto, 500px) minmax(
-      auto,
-      800px
-    );
+  grid-template: minmax(auto, 70px) minmax(auto, 300px) minmax(auto, 600px) / 1fr;
   grid-template-areas:
-    "title title"
-    "form dogs";
+    "title"
+    "form"
+    "dogs";
   gap: 25px;
   @media screen and (max-width: 1200px) {
     grid-template: minmax(auto, 70px) 1fr / minmax(auto, 300px) minmax(
@@ -46,12 +44,27 @@
   }
   &__title {
     grid-area: title;
-    color: #ffa260;
-    font-size: 36px;
+    color: #fff5ed;
+    font-size: 40px;
     font-family: "Josefin Slab";
     letter-spacing: 2px;
     justify-self: center;
     align-self: center;
+    position: relative;
+    z-index: 2;
+    padding: 15px;
+    &::before {
+      content: "";
+      background-color: #3d8784;
+      opacity: 0.1;
+      border-radius: 25px;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
     @media screen and (max-width: 600px) {
       font-size: 28px;
     }
@@ -146,7 +159,7 @@
   &__dog-container {
     grid-area: dogs;
     display: grid;
-    grid-template: minmax(auto, 70px) minmax(auto, 330px) / minmax(auto, 300px) minmax(
+    grid-template: minmax(auto, 70px) minmax(auto, 330px) / minmax(auto, 600px) minmax(
         auto,
         600px
       );

@@ -40,7 +40,7 @@ export default function InputBreed({
         <option value="">Выберите породу</option>
         {breedsList.map((breed) => (
           <option key={breed.id} value={breed.nameEn}>
-            {breed.nameEn}
+            {breed.nameRu}
           </option>
         ))}
       </select>

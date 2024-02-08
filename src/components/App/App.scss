@@ -16,4 +16,11 @@
   );
   align-items: center;
   justify-items: center;
+  // @media screen and (max-width: 600px) {
+  //   grid-template: minmax(250px, auto) 1fr minmax(70px, auto) / 1fr;
+  //   grid-template-areas:
+  //     "header"
+  //     "main"
+  //     "footer";
+  // }
 }

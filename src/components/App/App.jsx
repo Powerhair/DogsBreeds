@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 
 //scss
-import "./App.css";
+import "./App.scss";
 
 //Components
 import Main from "../Main/Main";
@@ -11,10 +11,11 @@ import Header from "../Header/Header";
 import { apiUrl } from "../../utils/config";
 
 const App = () => {
+  const [activeComponent, setActiveComponent] = useState("test");
+
   const [breedsList, setBreedsList] = useState([]);
-  const [dogImages, setDogImages] = useState([]);
-  const [dogBreeds, setDogBreeds] = useState([]);
-  const [dogTemperaments, setDogTemperaments] = useState([]);
+
+  const [randomDogBreed, setRandomDogBreed] = useState([]);
 
   const [currentBreedIndex, setCurrentBreedIndex] = useState(null);
   const [dogInfo, setDogInfo] = useState({
@@ -42,13 +43,7 @@ const App = () => {
       return fetch(apiUrl + "dogbreeds/random")
         .then((response) => response.json())
         .then((data) => {
-          const images = data.map((breed) => breed.imagePath);
-          const breeds = data.map((breed) => breed.nameRu);
-          const temperaments = data.map((breed) => breed.description);
-
-          setDogImages(images);
-          setDogBreeds(breeds);
-          setDogTemperaments(temperaments);
+          setRandomDogBreed(data);
         })
         .catch((err) => {
           console.error(err);
@@ -134,16 +129,36 @@ const App = () => {
     setCurrentBreedIndex(getRandomBreedIndex());
   };
 
+  const showTest = () => {
+    setActiveComponent("test");
+  };
+
+  const showContent = () => {
+    setActiveComponent("content");
+  };
+
+  const showQuiz = () => {
+    setActiveComponent("quiz");
+  };
+
+  const showSearch = () => {
+    setActiveComponent("search");
+  };
+
   return (
     <div className="app">
-      <Header />
+      <Header
+        showQuiz={showQuiz}
+        showContent={showContent}
+        showSearch={showSearch}
+        showTest={showTest}
+      />
       <Main
+        activeComponent={activeComponent}
         breedsList={breedsList}
-        randomDogImage={dogImages}
-        randomDogBreeds={dogBreeds}
-        randomDogTemperaments={dogTemperaments}
         dogInfo={dogInfo}
         nextQuizQuestion={nextQuizQuestion}
+        randomDogBreed={randomDogBreed}
       />
       <Footer />
     </div>

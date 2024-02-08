@@ -9,9 +9,8 @@ import React, { useState } from "react";
 
 export default function Main({
   breedsList,
-  randomDogImage,
-  randomDogBreeds,
-  randomDogTemperaments,
+  activeComponent,
+  randomDogBreed,
   dogInfo,
   nextQuizQuestion,
 }) {
@@ -32,21 +31,23 @@ export default function Main({
 
   return (
     <div className="main">
-      <Test breedList={breedsList} />
-      <Content
-        randomDogImage={randomDogImage}
-        randomDogBreeds={randomDogBreeds}
-        randomDogTemperaments={randomDogTemperaments}
-      />
-      <Quiz dogInfo={dogInfo} nextQuizQuestion={nextQuizQuestion} />
-      <SearchDog
-        breedName={breedName}
-        handleInputChange={handleInputChange}
-        handleButtonClick={handleButtonClick}
-        selectedBreed={selectedBreed}
-        handleChoiceBreed={handleChoiceBreed}
-        breedsList={breedsList}
-      />
+      {activeComponent === "test" && <Test breedList={breedsList} />}
+      {activeComponent === "content" && (
+        <Content randomDogBreed={randomDogBreed} />
+      )}
+      {activeComponent === "quiz" && (
+        <Quiz dogInfo={dogInfo} nextQuizQuestion={nextQuizQuestion} />
+      )}
+      {activeComponent === "search" && (
+        <SearchDog
+          breedName={breedName}
+          handleInputChange={handleInputChange}
+          handleButtonClick={handleButtonClick}
+          selectedBreed={selectedBreed}
+          handleChoiceBreed={handleChoiceBreed}
+          breedsList={breedsList}
+        />
+      )}
     </div>
   );
 }

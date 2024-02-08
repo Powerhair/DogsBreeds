@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "./Quiz.scss";
 
-export default function Quiz({ dogInfo, nextQuizQuestion }) {
+const Quiz = React.memo(function Quiz({ dogInfo, nextQuizQuestion }) {
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
   const [isCorrectAnswer, setIsCorrectAnswer] = useState(false);
 
@@ -38,9 +38,7 @@ export default function Quiz({ dogInfo, nextQuizQuestion }) {
   return (
     <div className="quiz">
       <h3 className="quiz__title">Собачий квиз</h3>
-      {/* <div className="quiz__card"> */}
       <img className="quiz__img" src={dogInfo.image} alt="" />
-      {/* </div> */}
       <div className="quiz__container">{renderAnswers()}</div>
 
       {selectedAnswerIndex !== null && (
@@ -54,4 +52,6 @@ export default function Quiz({ dogInfo, nextQuizQuestion }) {
       )}
     </div>
   );
-}
+});
+
+export default Quiz;
