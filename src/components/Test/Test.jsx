@@ -11,44 +11,52 @@ export default function Test({ breedList }) {
   };
 
   const handleDateChange = (event) => {
-    setDate(event.target.value);
+    let inputValue = event.target.value;
+    let formattedDate = inputValue.replace(/[^\d]/g, ""); // Удаляем все, кроме цифр
+
+    if (formattedDate.length > 8) {
+      formattedDate = formattedDate.slice(0, 8);
+    }
+
+    if (formattedDate.length >= 2) {
+      formattedDate = formattedDate.slice(0, 2) + "." + formattedDate.slice(2);
+    }
+
+    if (formattedDate.length >= 5) {
+      formattedDate = formattedDate.slice(0, 5) + "." + formattedDate.slice(5);
+    }
+
+    setDate(formattedDate);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (name && date) {
-      const currentDate = new Date();
-      currentDate.setHours(0, 0, 0, 0);
+      const dateString = date;
+      const filteredString = dateString.replace(/\D/g, ""); // Удаляем все нецифровые символы
+      const digitsArray = Array.from(filteredString).map(Number); // Преобразуем строку в массив цифр
 
-      const [day, month, year] = date.split(".");
+      const sum = digitsArray.reduce((acc, num) => acc + num, 0); // Суммируем все цифры в массиве
 
-      if (year && month && day) {
-        let numericDate = new Date(year, parseInt(month) - 1, day).getTime();
+      let month = parseInt(date.split(".")[1]);
+      let selectedBreeds;
 
-        if (numericDate < 0) {
-          numericDate *= -1;
-        }
-
-        let nameSum = 0;
-        for (let i = 0; i < name.length; i++) {
-          nameSum += name.charCodeAt(i);
-        }
-
-        const digitsSum =
-          nameSum
-            .toString()
-            .split("")
-            .reduce((sum, digit) => sum + parseInt(digit), 0) +
-          numericDate
-            .toString()
-            .split("")
-            .reduce((sum, digit) => sum + parseInt(digit), 0);
-
-        setSelectedBreed(breedList[digitsSum - 1]);
-
-        setName("");
-        setDate("");
+      if (month >= 1 && month <= 4) {
+        selectedBreeds = breedList.slice(0, breedList.length / 3);
+      } else if (month >= 5 && month <= 8) {
+        selectedBreeds = breedList.slice(
+          breedList.length / 3,
+          (breedList.length / 3) * 2
+        );
+      } else {
+        selectedBreeds = breedList.slice((breedList.length / 3) * 2);
       }
+
+      let selectedBreedIndex = Math.floor(selectedBreeds.length * (sum / 100));
+      setSelectedBreed(selectedBreeds[selectedBreedIndex]);
+
+      setName("");
+      setDate("");
     }
   };
 
@@ -72,7 +80,7 @@ export default function Test({ breedList }) {
         </div>
         <div className="test__container test__date">
           <label className="test__form-label" htmlFor="date">
-            Дата рождения (дд.мм.гггг):
+            Дата рождения:
           </label>
           <input
             className="test__input"

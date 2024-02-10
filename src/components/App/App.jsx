@@ -160,7 +160,7 @@ const App = () => {
         nextQuizQuestion={nextQuizQuestion}
         randomDogBreed={randomDogBreed}
       />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

@@ -26,19 +26,22 @@
       "form dogs";
   }
   @media screen and (max-width: 800px) {
-    grid-template: minmax(auto, 70px) 1fr 1fr / minmax(auto, 250px);
+    grid-template: minmax(auto, 70px) minmax(auto, 300px) 1fr / minmax(
+        auto,
+        250px
+      );
     grid-template-areas:
       "title"
       "form"
       "dogs";
   }
-  @media screen and (max-width: 800px) {
-    grid-template: minmax(auto, 70px) minmax(auto, 250px) 1fr / 1fr;
-    grid-template-areas:
-      "title"
-      "form"
-      "dogs";
-  }
+  // @media screen and (max-width: 800px) {
+  //   grid-template: minmax(auto, 70px) minmax(auto, 250px) 1fr / 1fr;
+  //   grid-template-areas:
+  //     "title"
+  //     "form"
+  //     "dogs";
+  // }
   @media screen and (max-width: 400px) {
     justify-self: start;
   }
@@ -91,7 +94,7 @@
         "date"
         "btn";
       column-gap: 0;
-      row-gap: 10px;
+      row-gap: 40px;
       justify-self: center;
     }
   }

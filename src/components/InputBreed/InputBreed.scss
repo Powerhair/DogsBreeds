@@ -12,11 +12,21 @@
   @media screen and (max-width: 900px) {
     margin-bottom: 30px;
   }
+  @media screen and (max-width: 600px) {
+    grid-template: minmax(auto, 100px) minmax(auto, 70px) minmax(300px, auto) / minmax(
+        auto,
+        300px
+      );
+    grid-template-areas:
+      "title"
+      "select"
+      "description";
+  }
 
   &__title {
     grid-area: title;
-    color: #ffa260;
-    font-size: 36px;
+    color: #fff5ed;
+    font-size: 28px;
     font-family: "Josefin Slab";
     letter-spacing: 2px;
     justify-self: center;
@@ -36,6 +46,9 @@
     text-align: center;
     justify-self: center;
     grid-area: select;
+    @media screen and (max-width: 600px) {
+      max-width: 280px;
+    }
   }
   &__description {
     margin-top: 50px;
