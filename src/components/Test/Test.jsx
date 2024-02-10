@@ -36,7 +36,18 @@ export default function Test({ breedList }) {
       const filteredString = dateString.replace(/\D/g, ""); // Удаляем все нецифровые символы
       const digitsArray = Array.from(filteredString).map(Number); // Преобразуем строку в массив цифр
 
+      let nameSum = 0;
+
+      for (let i = 0; i < name.length; i++) {
+        nameSum += name.charCodeAt(i);
+      }
+
+      const nameArray = Array.from(nameSum.toString()).map(Number);
+      const fullNameSum = nameArray.reduce((acc, num) => acc + num, 0);
+
       const sum = digitsArray.reduce((acc, num) => acc + num, 0); // Суммируем все цифры в массиве
+
+      const fullSum = fullNameSum + sum;
 
       let month = parseInt(date.split(".")[1]);
       let selectedBreeds;
@@ -52,7 +63,10 @@ export default function Test({ breedList }) {
         selectedBreeds = breedList.slice((breedList.length / 3) * 2);
       }
 
-      let selectedBreedIndex = Math.floor(selectedBreeds.length * (sum / 100));
+      let selectedBreedIndex = Math.floor(
+        selectedBreeds.length * (fullSum / 100)
+      );
+
       setSelectedBreed(selectedBreeds[selectedBreedIndex]);
 
       setName("");
